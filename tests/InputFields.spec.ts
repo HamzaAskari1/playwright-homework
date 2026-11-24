@@ -1,12 +1,16 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
+  
   await page.goto('/')
 
   //1. Select the PET TYPES menu item in the navigation bar
   await page.getByText('PET TYPES').click()
 
 })
+
+
+test.describe('Assignment 1 - Input fields', () => {
 
 test('Update pet type', async ({ page }) => {
 
@@ -55,10 +59,10 @@ test('Update pet type', async ({ page }) => {
 test('Cancel pet type update', async ({ page }) => {
 
   test.slow()
+  const TableTitle = page.locator('h2', { hasText: 'Pet Types' }) //locator for <h2 element
   const DogPetTypeRow = await page.locator('table tr').nth(2)
   const DogPetRowTextBox = await page.locator('#name')
   const UpdateRecordButton2 = page.getByRole('button', { name: 'Update' })
-  const TableTitle = page.locator('h2', { hasText: 'Pet Types' }) //locator for <h2 element
 
 
   // 1. Select the PET TYPES menu item in the navigation bar 
@@ -90,7 +94,7 @@ test('Cancel pet type update', async ({ page }) => {
 
 test('Validation of Pet type name', async ({ page }) => {
   test.slow()
-
+const TableTitle = page.locator('h2', { hasText: 'Pet Types' }) //locator for <h2 element
 const LizardPetTypeRow = await page.locator('table tr').nth(3)
 const LizardPetRowTextBox = await page.locator('#name')
 
@@ -117,6 +121,8 @@ await page.getByRole('button', {name: 'Update'}).click()
 // 8. Click on the "Cancel" button
 await page.getByRole('button', {name: 'Cancel'}).click()
 // 9. Add assertion that "Pet Types" page is displayed
- const TableTitle2 = page.locator('h2', { hasText: 'Pet Types' })
- await expect(TableTitle2).toBeVisible
+
+ await expect(TableTitle).toBeVisible
+})
+
 })
