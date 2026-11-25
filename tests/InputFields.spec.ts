@@ -36,12 +36,12 @@ test.describe('Assignment 1 - Input fields', () => {
     await firstRecordEditButton.click()
 
     // 8. Change the pet type name back from "rabbit" to "cat" and click "Update" button
-    await expect(petTypeNameInputField).toHaveValue('rabbit')
-    await petTypeNameInputField.fill('cat')
+    await expect(pettypenameInputField).toHaveValue('rabbit')
+    await pettypenameInputField.fill('cat')
     await updateRecordButton.click()
 
     // 9. Add the assertion that the first pet type in the list of names has a value "cat" 
-    await expect(petTypeNameInputField).toHaveValue('cat')
+    await expect(pettypenameInputField).toHaveValue('cat')
   })
 
   test('Cancel pet type update', async ({ page }) => {
