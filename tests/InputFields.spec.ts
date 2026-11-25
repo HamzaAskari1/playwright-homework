@@ -1,14 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-
   await page.goto('/')
-
   //1. Select the PET TYPES menu item in the navigation bar
   await page.getByText('PET TYPES').click()
-
 })
-
 
 test.describe('Assignment 1 - Input fields', () => {
 
@@ -18,14 +14,12 @@ test.describe('Assignment 1 - Input fields', () => {
     const firstRecordEditButton = page.getByRole('button', { name: 'Edit' }).first()
     const updateRecordButton = page.getByRole('button', { name: 'Update' })
 
-
     //2. Add assertion of the "Pet Types" text displayed above the table with the list of pet types
     await expect(page.getByRole('heading', { name: 'Pet Types' })).toHaveText('Pet Types')
 
     //3. Click on "Edit" button for the "cat" pet type
     await firstRecordEditButton.click() //click on the first row of the table
     await expect(pettypenameInputField).toHaveValue('cat')
-
 
     //4. Add assertion of the "Edit Pet Type" text displayed
     await expect(page.getByRole('heading')).toHaveText('Edit Pet Type') //assert the text in <h2 is Edit Pet Type
@@ -34,7 +28,6 @@ test.describe('Assignment 1 - Input fields', () => {
     await expect(pettypenameInputField).toHaveValue('cat')
     await pettypenameInputField.fill('rabbit')
     await updateRecordButton.click()
-
 
     //6. Add the assertion that the first pet type in the list of types has a value "rabbit" 
     await expect(page.locator('[id="0"]')).toHaveValue('rabbit')
@@ -51,9 +44,7 @@ test.describe('Assignment 1 - Input fields', () => {
     await expect(petTypeNameInputField).toHaveValue('cat')
   })
 
-
   test('Cancel pet type update', async ({ page }) => {
-
     const pettypeRow = page.locator('table tr').nth(2)
     const petTypeNameInputField = page.locator('#name')
 
@@ -110,5 +101,4 @@ test.describe('Assignment 1 - Input fields', () => {
     // 9. Add assertion that "Pet Types" page is displayed
     await expect(page.getByRole('heading')).toHaveText('Pet Types')
   })
-  //end
 })
