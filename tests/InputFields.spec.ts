@@ -81,8 +81,6 @@ test.describe('Assignment 1 - Input fields', () => {
     await expect(DogPetTypeRow.getByRole('textbox')).toHaveValue('dog')
   })
 
-
-
   test('Validation of Pet type name', async ({ page }) => {
 
     const LizardPetTypeRow = page.locator('table tr').nth(3)
@@ -112,9 +110,9 @@ test.describe('Assignment 1 - Input fields', () => {
 
     // 8. Click on the "Cancel" button
     await page.getByRole('button', { name: 'Cancel' }).click()
-    // 9. Add assertion that "Pet Types" page is displayed
 
+    // 9. Add assertion that "Pet Types" page is displayed
     await expect(page.getByRole('heading', { name: 'Pet Types' })).toHaveText('Pet Types')
   })
-//end
+  //end
 })
